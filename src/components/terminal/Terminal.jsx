@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import {useState} from "react";
 import TerminalWindow from "./TerminalWindow";
 import TerminalBody from "./TerminalBody";
+import StatusBar from "./StatusBar";
 
 function Terminal() {
   const [booted, setBooted] = useState(true);
@@ -21,8 +22,15 @@ function Terminal() {
           filter: "drop-shadow(0 0 40px #00ff9d18)",
         }}
       > 
+      {/* Terminal Window */}
         <TerminalWindow />
+
+        {/* Terminal Body */}
         <TerminalBody />
+
+        {/* Status Bar */}
+        <StatusBar />
+
       </motion.div>
     </div>
   );
