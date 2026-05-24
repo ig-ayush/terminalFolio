@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import {useState} from "react";
 import TerminalWindow from "./TerminalWindow";
+import TerminalBody from "./TerminalBody";
 
 function Terminal() {
   const [booted, setBooted] = useState(true);
@@ -21,6 +22,7 @@ function Terminal() {
         }}
       > 
         <TerminalWindow />
+        <TerminalBody />
       </motion.div>
     </div>
   );
