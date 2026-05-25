@@ -44,9 +44,6 @@ const COMMANDS = {
         ["resume", "View / download resume"],
         ["clear", "Clear terminal output"],
         ["whoami", "???"],
-        ["sudo hire ayush", "Secret command 👀"],
-        ["matrix", "Enter the Matrix"],
-        ["coffee", "Fuel the developer"],
       ].map(([cmd, desc]) => (
         <div key={cmd} className="flex gap-3 items-start">
           <span className={`${CYAN} min-w-25 font-semibold`}>{cmd}</span>
