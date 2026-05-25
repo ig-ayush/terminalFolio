@@ -6,6 +6,7 @@ import StatusBar from "./StatusBar";
 
 function Terminal() {
   const [booted, setBooted] = useState(true);
+
   return (
     <div className="terminal min-h-screen bg-[#020905] flex justify-center items-center p-3 sm:p-5"
       style={{
