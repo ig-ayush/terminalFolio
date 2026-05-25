@@ -50,10 +50,23 @@ export default function TerminalInput({ inputRef, input, setInput, booted, cmdHi
 
     const onKeyDown = (e) => {
         if (e.key === "Enter") {
-            console.log("Running command:", input);
-            runCommand(input);
-            setInput("");
-        }
+      runCommand(input);
+      setInput("");
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const next = Math.min(historyIdx + 1, cmdHistory.length - 1);
+      setHistoryIdx(next);
+      setInput(cmdHistory[next] ?? "");
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const next = Math.max(historyIdx - 1, -1);
+      setHistoryIdx(next);
+      setInput(next === -1 ? "" : cmdHistory[next] ?? "");
+    } else if (e.key === "Tab") {
+      e.preventDefault();
+      const match = Object.keys(COMMANDS).find((c) => c.startsWith(input.toLowerCase()));
+      if (match) setInput(match);
+    }
     }
 
     return (
