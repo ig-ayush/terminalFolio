@@ -1,3 +1,5 @@
+import {PORTFOLIO} from "./Portfolio";
+
 const GREEN = "text-[#00ff9d]";
 const CYAN = "text-[#00e5ff]";
 const YELLOW = "text-[#ffd200]";
@@ -28,6 +30,7 @@ const Link = ({ href, children }) => (
 
 
 const COMMANDS = {
+
      help: () => (
     <div className="space-y-1">
       <p className={`${GREEN} font-bold mb-2`}>╔═══ Available Commands ═══╗</p>
@@ -53,7 +56,35 @@ const COMMANDS = {
       <HR />
       <p className={`${DIM} text-xs`}>Tip: Use ↑ / ↓ to navigate command history</p>
     </div>
-  )
+  ),
+
+  about: () => (
+    <div className="space-y-3">
+      <div className={`${GREEN} text-lg font-bold`}>
+        ██╗  ██╗██╗   ██╗███████╗██╗  ██╗
+      </div>
+      <div className="space-y-1">
+        <p>
+          <span className={`${CYAN} font-semibold`}>Name        </span>
+          <span className={WHITE}>{PORTFOLIO.name}</span>
+        </p>
+        <p>
+          <span className={`${CYAN} font-semibold`}>Role        </span>
+          <span className={YELLOW}>{PORTFOLIO.role}</span>
+        </p>
+        <p>
+          <span className={`${CYAN} font-semibold`}>Location    </span>
+          <span className={WHITE}>{PORTFOLIO.location}</span>
+        </p>
+      </div>
+      <HR />
+      <p className={`${WHITE} leading-relaxed max-w-xl`}>{PORTFOLIO.bio}</p>
+      <p className={`${DIM} text-xs mt-1`}>
+        Type <span className={CYAN}>skills</span> or <span className={CYAN}>projects</span> to explore further.
+      </p>
+    </div>
+  ),
+
 }
 
 export {COMMANDS};
