@@ -1,21 +1,21 @@
 const PORTFOLIO = {
   name: "Ayush Acharya",
-  role: "Aspiring full-Stack Developer",
-  bio: "Crafting clean code and building scalable web experiences. Passionate about open-source, system design, and pushing pixels into perfection.",
+  role: "Aspiring Full-Stack Developer",
+  bio: "I’m a aspiring developer skilled in backend and frontend technologies. I enjoy building scalable web applications and learning new tech stacks.",
   location: "Bangalore, India",
-  email: "ayush@devmail.io",
+  email: "igayushacharya@gmail.com",
   phone: "+91 98765 43210",
   education: {
-    degree: "B.Tech in Computer Science & Engineering",
-    college: "Indian Institute of Technology",
-    year: "2024",
-    details: "Specialization in Software Systems · CGPA: 8.7/10",
+    degree: "Bachelor of Computer Applications (BCA)",
+    college: "Sri Dharmasthala Manjunatheshwara College (Autonomous)",
+    year: "2025",
+    details: "Specialization in Computer Applications · CGPA: 7.38/10",
   },
   skills: {
-    Frontend: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Redux"],
-    Backend: ["Java", "Python", "Node.js", "Express", "Go", "GraphQL"],
-    Database: ["PostgreSQL", "MongoDB", "MySQL", "Firebase"],
-    Tools: ["Git", "Docker", "AWS", "Vercel", "Linux", "Figma", "VS Code"],
+    Frontend: ["React.js", "Tailwind CSS", "Framer Motion"],
+    Backend: ["Java", "Python", "Node.js", "Java Spring"],
+    Database: ["MySQL", "MongoDB", "Firebase"],
+    Tools: ["Git", "GitHub", "Vercel", "Linux", "Docker", "VS Code"],
   },
   projects: [
     {
