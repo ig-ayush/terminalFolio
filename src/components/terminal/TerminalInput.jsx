@@ -1,6 +1,15 @@
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { COMMANDS } from "../commands/Commands";
-export default function TerminalInput({ inputRef, input, setInput, booted, cmdHistory, setCmdHistory, historyIdx, setHistoryIdx }) {
+import { colgroup } from "framer-motion/client";
+export default function TerminalInput({ inputRef, input, setInput, booted, cmdHistory, setCmdHistory, historyIdx, setHistoryIdx, setHistory }) {
+    const [showCursor, setShowCursor] = useState(true);
+
+    // cursor
+    useEffect(() => {
+        const t = setInterval(() => setShowCursor((s) => !s), 530);
+    return () => clearInterval(t);
+    }, []);
+
     const PROMPT = "ayush@terminalfolio:~$";
 
     const runCommand = useCallback(
@@ -13,15 +22,15 @@ export default function TerminalInput({ inputRef, input, setInput, booted, cmdHi
       setHistoryIdx(-1);
 
       if (cmd === "clear") {
-        setHistory([]);
-        return;
-      }
-
-      const handler = COMMANDS[cmd];
-      const output = handler ? (
-        handler()
-      ) : (
-        <div>
+          setHistory([]);
+          return;
+        }
+        
+        const handler = COMMANDS[cmd];
+        const output = handler ? (
+            handler()
+        ) : (
+            <div>
           <p className="text-[#ff5f5f]">
             bash: <span className="font-semibold">{cmd}</span>: command not found
           </p>
@@ -30,7 +39,7 @@ export default function TerminalInput({ inputRef, input, setInput, booted, cmdHi
           </p>
         </div>
       );
-
+    
       setHistory((h) => [
         ...h,
         { id: Date.now() + Math.random(), prompt: PROMPT, cmd: raw, output },
@@ -41,7 +50,8 @@ export default function TerminalInput({ inputRef, input, setInput, booted, cmdHi
 
     const onKeyDown = (e) => {
         if (e.key === "Enter") {
-            // Handle command execution here
+            console.log("Running command:", input);
+            runCommand(input);
             setInput("");
         }
     }
@@ -56,7 +66,9 @@ export default function TerminalInput({ inputRef, input, setInput, booted, cmdHi
               <div className="flex-1 relative flex items-center">
                 <span className="text-[#e2e8f0] text-sm break-all">{input}</span>
                 <span
-                  className={`inline-block w-[7px] h-[1em] bg-[#00ff9d] ml-0.5 transition-opacity duration-100`}
+                  className={`inline-block w-[7px] h-[1em] bg-[#00ff9d] ml-0.5 transition-opacity duration-100 ${
+                    showCursor ? "opacity-100" : "opacity-0"
+                  }`}
                   style={{ verticalAlign: "text-bottom" }}
                 />
                 <input

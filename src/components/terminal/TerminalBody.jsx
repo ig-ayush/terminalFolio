@@ -22,11 +22,11 @@ export default function TerminalBody() {
             scrollbarColor: "#1e3a2f transparent",
           }}
         >
-            <div className="output-block space-y-1">
-            {history.map((entry) => (
-              <TerminalOutput key={entry.id} entry={entry} />
+        <div className="output-block space-y-1">
+            {history.map((output) => (
+              <TerminalOutput key={output.id} output={output} />
             ))}
-          </div>
+        </div>
           <TerminalInput
             inputRef={inputRef}
             input={input}
@@ -36,6 +36,8 @@ export default function TerminalBody() {
             setCmdHistory={setCmdHistory}
             historyIdx={historyIndex}
             setHistoryIdx={setHistoryIndex}
+            setHistory={setHistory}
+            history={history}
           />
         </div>
     )
