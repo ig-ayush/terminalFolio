@@ -11,7 +11,7 @@ export default function TerminalOutput({ output }) {
       {/* Command echo */}
       <div className="flex items-center gap-2 mb-2">
         <span className="text-[#00ff9d] font-semibold text-sm select-none">
-          {output.prompt}x
+          {output.prompt}
         </span>
         <span className="text-[#e2e8f0] text-sm">{output.cmd}</span>
       </div>
