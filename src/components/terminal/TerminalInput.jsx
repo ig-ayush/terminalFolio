@@ -1,4 +1,43 @@
-export default function TerminalInput({ inputRef, input, setInput, booted }) {
+import { useCallback } from "react";
+import { COMMANDS } from "../commands/Commands";
+export default function TerminalInput({ inputRef, input, setInput, booted, cmdHistory, setCmdHistory, historyIdx, setHistoryIdx }) {
+    const PROMPT = "ayush@terminalfolio:~$";
+
+    const runCommand = useCallback(
+    (raw) => {
+      const cmd = raw.trim().toLowerCase();
+      if (!cmd) return;
+
+      // Save to command history
+      setCmdHistory((h) => [raw, ...h]);
+      setHistoryIdx(-1);
+
+      if (cmd === "clear") {
+        setHistory([]);
+        return;
+      }
+
+      const handler = COMMANDS[cmd];
+      const output = handler ? (
+        handler()
+      ) : (
+        <div>
+          <p className="text-[#ff5f5f]">
+            bash: <span className="font-semibold">{cmd}</span>: command not found
+          </p>
+          <p className="text-[#6b7280] text-xs mt-1">
+            Type <span className="text-[#00e5ff]">help</span> to see available commands.
+          </p>
+        </div>
+      );
+
+      setHistory((h) => [
+        ...h,
+        { id: Date.now() + Math.random(), prompt: PROMPT, cmd: raw, output },
+      ]);
+    },
+    []
+  );
 
     const onKeyDown = (e) => {
         if (e.key === "Enter") {
@@ -17,9 +56,7 @@ export default function TerminalInput({ inputRef, input, setInput, booted }) {
               <div className="flex-1 relative flex items-center">
                 <span className="text-[#e2e8f0] text-sm break-all">{input}</span>
                 <span
-                  className={`inline-block w-[7px] h-[1em] bg-[#00ff9d] ml-0.5 transition-opacity duration-100 ${
-                    showCursor ? "opacity-100" : "opacity-0"
-                  }`}
+                  className={`inline-block w-[7px] h-[1em] bg-[#00ff9d] ml-0.5 transition-opacity duration-100`}
                   style={{ verticalAlign: "text-bottom" }}
                 />
                 <input

@@ -1,13 +1,16 @@
 import {useState, useRef} from "react";
+import TerminalOutput from "./TerminalOutput";
+import TerminalInput from "./TerminalInput";
 
 export default function TerminalBody() {
+    const [booted, setBooted] = useState(true);
     const [input, setInput] = useState("");
     const inputRef = useRef(null);
     const containerRef = useRef(null);
     const [history, setHistory] = useState([]);
     const [cmdHistory, setCmdHistory] = useState([]);
     const [historyIndex, setHistoryIndex] = useState(-1);
-    
+
 
     return (
         <div
@@ -19,7 +22,21 @@ export default function TerminalBody() {
             scrollbarColor: "#1e3a2f transparent",
           }}
         >
-            This is a terminal interface. You can type commands here.
+            <div className="output-block space-y-1">
+            {history.map((entry) => (
+              <TerminalOutput key={entry.id} entry={entry} />
+            ))}
+          </div>
+          <TerminalInput
+            inputRef={inputRef}
+            input={input}
+            setInput={setInput}
+            booted={booted}
+            cmdHistory={cmdHistory}
+            setCmdHistory={setCmdHistory}
+            historyIdx={historyIndex}
+            setHistoryIdx={setHistoryIndex}
+          />
         </div>
     )
 }

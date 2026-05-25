@@ -27,7 +27,7 @@ const Link = ({ href, children }) => (
 );
 
 
-const Commands = {
+const COMMANDS = {
      help: () => (
     <div className="space-y-1">
       <p className={`${GREEN} font-bold mb-2`}>╔═══ Available Commands ═══╗</p>
@@ -59,4 +59,4 @@ const Commands = {
   )
 }
 
-export {Commands};
+export {COMMANDS};
