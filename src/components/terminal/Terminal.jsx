@@ -27,7 +27,7 @@ function Terminal() {
         <TerminalWindow />
 
         {/* Terminal Body */}
-        <TerminalBody />
+        <TerminalBody booted={booted} />
 
         {/* Status Bar */}
         <StatusBar />

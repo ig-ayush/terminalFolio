@@ -2,8 +2,7 @@ import {useState, useRef, useEffect} from "react";
 import TerminalOutput from "./TerminalOutput";
 import TerminalInput from "./TerminalInput";
 
-export default function TerminalBody() {
-    const [booted, setBooted] = useState(true);
+export default function TerminalBody({ booted }) {
     const [input, setInput] = useState("");
     const inputRef = useRef(null);
     const containerRef = useRef(null);
