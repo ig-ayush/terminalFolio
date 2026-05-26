@@ -2,12 +2,9 @@ import {useState, useRef, useEffect} from "react";
 import TerminalOutput from "./TerminalOutput";
 import TerminalInput from "./TerminalInput";
 
-export default function TerminalBody() {
-    const [booted, setBooted] = useState(true);
+export default function TerminalBody({ booted, inputRef, history, setHistory }) {
     const [input, setInput] = useState("");
-    const inputRef = useRef(null);
     const containerRef = useRef(null);
-    const [history, setHistory] = useState([]);
     const [cmdHistory, setCmdHistory] = useState([]);
     const [historyIndex, setHistoryIndex] = useState(-1);
     const bottomRef = useRef(null);
@@ -36,7 +33,7 @@ export default function TerminalBody() {
             ))}
         </div>
           <TerminalInput
-            inputRef={inputRef}
+            ref={inputRef}
             input={input}
             setInput={setInput}
             booted={booted}
