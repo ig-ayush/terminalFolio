@@ -1,11 +1,31 @@
-import { motion } from "framer-motion";
-import {useState} from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {useState, useCallback} from "react";
 import TerminalWindow from "./TerminalWindow";
 import TerminalBody from "./TerminalBody";
 import StatusBar from "./StatusBar";
+import WelcomeBanner from "./WelcomeBanner";
+import BootScreen from "./BootScreen";
 
 function Terminal() {
-  const [booted, setBooted] = useState(true);
+    const [booted, setBooted] = useState(false);
+    const inputRef = useState(null);
+    const [history, setHistory] = useState([]);
+
+    const handleBoot = useCallback(() => {
+    setBooted(true);
+    setTimeout(() => {
+      inputRef.current?.focus();
+      setHistory([
+        {
+          id: Date.now(),
+          prompt: "",
+          cmd: "",
+          output: <WelcomeBanner />,
+        },
+      ]);
+    }, 100);
+  }, []);
+
 
   return (
     <div className="terminal min-h-screen bg-[#020905] flex justify-center items-center p-3 sm:p-5"
@@ -23,11 +43,15 @@ function Terminal() {
           filter: "drop-shadow(0 0 40px #00ff9d18)",
         }}
       > 
+
+        {/* Boot Screen */}
+        <AnimatePresence>{!booted && <BootScreen onDone={handleBoot} />}</AnimatePresence>.
+
       {/* Terminal Window */}
         <TerminalWindow />
 
         {/* Terminal Body */}
-        <TerminalBody booted={booted} />
+        <TerminalBody booted={booted} inputRef={inputRef} history={history} setHistory={setHistory} />
 
         {/* Status Bar */}
         <StatusBar />
