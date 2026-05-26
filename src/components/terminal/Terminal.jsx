@@ -14,17 +14,10 @@ function Terminal() {
     const handleBoot = useCallback(() => {
     setBooted(true);
     setTimeout(() => {
-      inputRef.current?.focus();
-      setHistory([
-        {
-          id: Date.now(),
-          prompt: "",
-          cmd: "",
-          output: <WelcomeBanner />,
-        },
-      ]);
-    }, 100);
-  }, []);
+    inputRef.current?.focus();
+    setHistory([{ id: Date.now(), prompt: "", cmd: "", output: <WelcomeBanner /> }]);
+    }, 10);
+  } , []);
 
 
   return (
@@ -36,12 +29,9 @@ function Terminal() {
       >
        <motion.div
         initial={{ opacity: 0, scale: 0.96, y: 20 }}
-        animate={booted ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="main-body w-full max-w-4xl"
-        style={{
-          filter: "drop-shadow(0 0 40px #00ff9d18)",
-        }}
       > 
 
         {/* Boot Screen */}

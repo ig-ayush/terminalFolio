@@ -21,17 +21,27 @@ function BootScreen({ onDone }) {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const timers = BOOT_LINES.map((line, i) =>
-      setTimeout(() => {
+    const timers = [];
+
+    BOOT_LINES.forEach((line, i) => {
+      const timer = setTimeout(() => {
         setVisibleLines((prev) => [...prev, line]);
+
+        // Last line → start cleanup and call onDone
         if (i === BOOT_LINES.length - 1) {
           setTimeout(() => setDone(true), 700);
-          setTimeout(onDone, 1000);
+          setTimeout(onDone, 1400);   // Give time for fade out
         }
-      }, line.delay)
-    );
-    return () => timers.forEach(clearTimeout);
-  }, [onDone]);
+      }, line.delay);
+
+      timers.push(timer);
+    });
+
+    // Cleanup function
+    return () => {
+      timers.forEach((timer) => clearTimeout(timer));
+    };
+  }, [onDone]);   // Important: Keep onDone in dependency
 
   return (
     <motion.div
@@ -48,7 +58,7 @@ function BootScreen({ onDone }) {
             transition={{ duration: 0.2 }}
             className={
               line.highlight
-                ? "text-[#00ff9d] font-bold text-base tracking-widest text-center mt-2"
+                ? "text-[#00bfff] font-bold text-base tracking-widest text-center mt-2"
                 : line.text === ""
                 ? "h-2"
                 : "text-[#4ade80]"
@@ -57,8 +67,10 @@ function BootScreen({ onDone }) {
             {line.text}
           </motion.p>
         ))}
+
+        {/* Blinking cursor while booting */}
         {visibleLines.length > 0 && !done && (
-          <span className="inline-block w-2 h-4 bg-[#00ff9d] animate-pulse ml-1" />
+          <span className="inline-block w-2 h-4 bg-[#00bfff] animate-pulse ml-1" />
         )}
       </div>
     </motion.div>
