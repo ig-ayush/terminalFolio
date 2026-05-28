@@ -21,9 +21,6 @@ function WelcomeBanner() {
         Welcome! Type <span className="text-[#00e5ff] font-semibold">help</span> to see all
         commands, or start with <span className="text-[#00e5ff] font-semibold">about</span>.
       </p>
-      <p className="text-[#2d5240] text-[10px]">
-        Hint: Try <span className="text-[#4a6b55]">sudo hire ayush</span> 👀
-      </p>
     </div>
   );
 }
