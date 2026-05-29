@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import {useState, useCallback} from "react";
+import {useState, useCallback, useRef} from "react";
 import TerminalWindow from "./TerminalWindow";
 import TerminalBody from "./TerminalBody";
 import StatusBar from "./StatusBar";
@@ -8,7 +8,7 @@ import BootScreen from "./BootScreen";
 
 function Terminal() {
     const [booted, setBooted] = useState(false);
-    const inputRef = useState(null);
+    const inputRef = useRef(null);
     const [history, setHistory] = useState([]);
 
     const handleBoot = useCallback(() => {
