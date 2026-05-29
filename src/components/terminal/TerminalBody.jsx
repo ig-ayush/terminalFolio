@@ -14,7 +14,6 @@ export default function TerminalBody({ booted, inputRef, history, setHistory }) 
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history]);
 
-  // Focus input when clicking anywhere in terminal body
   const focusInput = () => {
     inputRef.current?.focus();
   };
