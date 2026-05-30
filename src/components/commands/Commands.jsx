@@ -213,7 +213,7 @@ const COMMANDS = {
       <p className={`${GREEN} font-bold`}>▶ Resume</p>
       <HR />
       <p className={WHITE}>Opening resume in a new tab...</p>
-      <p><Link href="#">📄 ayush_resume_2024.pdf</Link></p>
+      <p><Link href="/ayushacharya.pdf">📄 ayush_resume_2024.pdf</Link></p>
       <p className={`${DIM} text-xs`}>If the download doesn't start, click the link above.</p>
     </div>
   ),
