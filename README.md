@@ -36,5 +36,5 @@ A interactive terminal-style portfolio built with React, showcasing my journey a
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ig-ayush/terminalFolio.git
 cd terminal-portfolio
