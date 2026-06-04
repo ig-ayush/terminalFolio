@@ -35,9 +35,16 @@ const PORTFOLIO = {
     {
       title: "REPORADAR",
       description: "Developed a web application that enables users to input any GitHub repository and view real-time.",
-      tech: ["React", "Go", "WebSockets", "Docker", "AWS EC2"],
+      tech: ["React", "JavaScript", "Git", "APIs", "Vercel"],
       github: "https://github.com/ayush/cloudshell",
       demo: "https://github.com/ig-ayush/RepoRadar",
+    },
+      {
+      title: "TrendFeet",
+      description: "TrendFeet is a mini-project developed as part of our college curriculum. It is a simple and responsive e-commerce website focused on local footwear shopping.",
+      tech: ["HTML", "CSS", "Firebase", "Git", "GitHub"],
+      github: "https://github.com/ig-ayush/Trendfeet-marketplace",
+      demo: "https://ig-ayush.github.io/Trendfeet-marketplace/",
     },
   ],
   experience: [
