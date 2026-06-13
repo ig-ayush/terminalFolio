@@ -23,7 +23,7 @@ A interactive terminal-style portfolio built with React, showcasing my journey a
 - `socials` - Social links
 - `resume` - View/Download resume
 - `clear` - Clear terminal
-- Fun commands: `whoami`, `matrix`, `coffee`, `sudo hire ayush`
+- `whoami`
 
 ## Tech Stack
 
